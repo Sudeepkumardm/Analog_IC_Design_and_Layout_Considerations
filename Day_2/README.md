@@ -8,9 +8,12 @@
 - Design and simulate a **Differential Amplifier**
 - Strengthen understanding of **MOSFET small-signal gain and biasing**
 
+## 🔹 Part 1 — Common Source Amplifier Gain Analysis
+
 ### 📌 Circuit 1 — Basic Common Source Amplifier
 Initial implementation of a standard CS amplifier to observe baseline gain.
-Here the size of the resistor is large and the gain is:
+
+Here, the load resistor is large, and the voltage gain is given by:
 
 \[
 A_v = -(g_m \times R_D)
@@ -19,24 +22,22 @@ A_v = -(g_m \times R_D)
 ![Circuit 1 Schematic](Common_Source_amplifier_gain_analysis/Analysis_1stCkt.png)
 
 ### 📌 Circuit 2 — Improved Gain Configuration
-Modified transistor sizing / biasing to enhance gain performance.
+Modified transistor sizing and biasing to enhance gain performance.
 
-We have replaced the resistor with a **diode-connected transistor**, which behaves as a current source.
-
-Here the gain becomes:
+The resistor is replaced with a **diode-connected transistor**, which behaves as an active load (current source). The voltage gain becomes:
 
 \[
 A_v = -\frac{g_{m1}}{g_{m2}}
 \]
 
-Yet, the gain is still not as desired.
+Although the gain improves, it is still not sufficient for the desired application.
 
 ![Circuit 2 Schematic](Common_Source_amplifier_gain_analysis/Analysis_2ndCkt.png)
 
 ### 📌 Circuit 3 — Optimized Gain Configuration
 Final optimized CS amplifier with improved gain and operating region stability.
 
-We now provide separate voltage sources to each MOSFET to obtain the desired gain.
+Separate bias voltages are applied to each MOSFET, allowing independent control of the operating point and resulting in higher gain.
 
 ![Circuit 3 Schematic](Common_Source_amplifier_gain_analysis/Analysis_3rdCkt.png)
 
@@ -58,35 +59,35 @@ A_v = -g_m \times R_D
 
 Where:
 
-- \( g_m = \frac{2I_D}{V_{OV}} \)
-- \( R_D \) = Drain resistance
-- Negative sign indicates **phase inversion**
+- \(g_m=\dfrac{2I_D}{V_{OV}}\)
+- \(R_D\) = Drain resistance
+- The negative sign indicates a **180° phase inversion** between the input and output.
 
 ## 🔹 Region of Operation Verification (Circuit 3)
 
-Ensured the MOSFET remains in the **saturation region** for maximum gain.
+The MOSFET is verified to operate in the **saturation region**, which is essential for achieving maximum small-signal gain.
 
 ![Region of Operation](Common_Source_amplifier_gain_analysis/Region_3rdCkt.png)
 
 ## ⏱ Transient Response — Circuit 3
 
-Observed the time-domain amplification and signal behavior.
+Transient simulation verifies the amplification of the input signal while maintaining the desired phase inversion.
 
 ![Transient Response](Common_Source_amplifier_gain_analysis/Transient_response_3rdckt.png)
 
 ## 🧪 Three-Circuit Comparison Summary
 
 | Circuit | Modification | Result |
-|----------|-------------|--------|
-| Circuit 1 | Basic CS | Low baseline gain |
-| Circuit 2 | Improved biasing | Higher gain |
-| Circuit 3 | Optimized sizing | **Best gain & stability** |
+|----------|--------------|--------|
+| Circuit 1 | Basic CS amplifier with resistor load | Low baseline gain |
+| Circuit 2 | Diode-connected MOS active load | Higher gain |
+| Circuit 3 | Independent bias voltages | **Highest gain and improved stability** |
 
 ### 📌 Key Insight
 
-- Gain improves with **higher \(g_m\)**
-- Longer channel length increases **output resistance**
-- Proper biasing ensures **stable saturation operation**
+- Increasing **transconductance (\(g_m\))** improves voltage gain.
+- Increasing the **channel length** increases the MOSFET output resistance, thereby improving gain.
+- Proper biasing ensures the MOSFET remains in saturation for stable amplifier operation.
 
 ## 🔹 Part 2 — Differential Amplifier Design / Operational Transconductance Amplifier (OTA)
 
@@ -104,30 +105,39 @@ Observed the time-domain amplification and signal behavior.
 
 ## 📐 Differential Gain Equation
 
+The differential voltage gain is given by:
+
 \[
-A_d = g_m \times R_D
+A_d=g_m \times R_D
 \]
 
 ### Common Mode Rejection Ratio (CMRR)
 
 \[
-CMRR = \frac{A_d}{A_{cm}}
+CMRR=\frac{A_d}{A_{cm}}
 \]
+
+where:
+
+- \(A_d\) = Differential gain
+- \(A_{cm}\) = Common-mode gain
+
+A higher **CMRR** indicates better rejection of common-mode noise.
 
 ## 🎓 Key Learnings
 
 ### Common Source Amplifier
 
-- Gain depends on **\(g_m\)** and load resistance.
-- Channel length affects **gain** and **output resistance**.
-- Proper biasing determines the **region of operation**.
-- Comparing multiple circuit variants helps optimize amplifier performance.
+- Voltage gain depends on **transconductance (\(g_m\))** and **load resistance**.
+- Longer channel devices provide higher output resistance, improving gain.
+- Proper biasing keeps the MOSFET in saturation for maximum amplification.
+- Comparing multiple circuit configurations helps optimize analog amplifier performance.
 
 ### Differential Amplifier
 
-- Amplifies the **difference between two input signals**.
-- Rejects **common-mode noise**, improving signal integrity.
-- Forms the fundamental building block of **Operational Amplifiers (Op-Amps)** and many analog ICs.
+- Amplifies only the **difference between two input signals**.
+- Rejects common-mode signals and external noise.
+- Forms the basic building block of **Operational Amplifiers (Op-Amps)** and many analog integrated circuits.
 
 ## 🛠 Tools Used
 
@@ -139,6 +149,6 @@ CMRR = \frac{A_d}{A_{cm}}
 
 Successfully designed and analyzed:
 
-- **Three Common Source amplifier variants** with gain comparison.
-- **A functional Differential Amplifier (OTA)**.
-- Improved understanding of **analog gain, MOSFET biasing, saturation operation, and circuit optimization**.
+- **Three Common Source amplifier configurations** with comparative gain analysis.
+- **A Differential Amplifier (OTA)** with differential response verification.
+- Improved understanding of **MOSFET biasing, gain enhancement techniques, saturation operation, and analog circuit optimization**.
