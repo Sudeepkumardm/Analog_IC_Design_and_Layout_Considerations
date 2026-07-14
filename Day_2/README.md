@@ -21,8 +21,8 @@ Initial implementation of a standard CS amplifier to observe baseline gain.
 Here the size of the resistor is large and the gain is:
 
 \[
-A_v = -(g_m \times R_D)
-\]
+A_v = -(g_m \Rd)
+]/
 
 ![Circuit 1 Schematic](Common_Source_amplifier_gain_analysis/Analysis_1stCkt.png)
 
@@ -36,8 +36,8 @@ We have replaced the resistor with a **diode-connected transistor**, which now b
 Here the gain is:
 
 \[
-A_v = -\frac{g_{m1}}{g_{m2}}
-\]
+A_v = -{g_{m1}}/{g_{m2}}
+]/
 
 Yet, the gain is not as desired.
 
@@ -70,7 +70,7 @@ We now give separate voltage sources to each of the MOSFETs to get the desired g
 
 \[
 A_v = -g_m \times R_D
-\]
+]/
 
 Where:
 - \( g_m = \frac{2I_D}{V_{OV}} \)
@@ -136,13 +136,13 @@ Observed time-domain amplification and signal behavior.
 
 \[
 A_d = g_m \times R_D
-\]
+]/
 
 ### Common Mode Rejection Ratio (CMRR)
 
 \[
 CMRR = \frac{A_d}{A_{cm}}
-\]
+]/
 
 ---
 
